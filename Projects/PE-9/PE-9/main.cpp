@@ -8,7 +8,7 @@ For example, 3^2 + 4^2 = 9 + 16 = 25 = 5^2.
 There exists exactly one Pythagorean triplet for which a + b + c = 1000.
 Find the product abc.
 
-Answer: 
+Answer: 31875000
 ********************************/
 #include <iostream>
 #define sqr(x) (x)*(x)
@@ -21,18 +21,19 @@ int main(int argc, char *argv[])
 {
     int a = 3;
     int b = 4;
-    int c = 340;
+    int c = 341;
+    int answer = 0;
 
-    while ( c < 1000 )
+    while ( c < 1000 && answer == 0)
     {
         while ( b < c )
         {
             while ( a < b )
             {
-                if ( (a + b + c == 1000) && (sqr(a) + sqr(b) == sqr(c)))
+                if ( ((a + b + c) == 1000) && ((sqr(a) + sqr(b)) == sqr(c)))
                 {
+                    answer = a * b * c;
                     cout << a << " " << b << " " << c << endl;
-                    break;
                 }
                 a++;
             }
@@ -44,9 +45,7 @@ int main(int argc, char *argv[])
         c += 4;
     }
     
-    
-
-    cout << a * b * c << endl;
+    cout << answer << endl;
 
     system("pause");
     return 0;
